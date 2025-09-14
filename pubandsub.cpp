@@ -26,6 +26,7 @@ private:
 class LocalizationNode : public rclcpp::Node {
 public:
     LocalizationNode() : Node("localization_node") {
+        //auto sub = create_subscription<Image>("/camera/image", 10, callback);
         camera_sub_ = this->create_subscription<sensor_msgs::msg::Image>("/camera/image", 10,
             [this](const sensor_msgs::msg::Image::SharedPtr msg) {process_camera_data(msg);});
         lidar_sub_ = this->create_subscription<sensor_msgs::msg::PointCloud2>(
